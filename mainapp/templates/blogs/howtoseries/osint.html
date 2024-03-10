@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs | How To Approach: OSINT</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">
+        <div class="header">CYBERMAZEARENA</div>
+        <div class="theme-switch" data-tooltip="Switch to Light Mode">
+            <div class="switch"></div>
+        </div>
+    </div>
+    <!-- Add the <hr> element with a class based on the theme -->
+    <hr class="hr-light">
+    <div class ="wrapper">
+        <div class="menucontainer">
+        <ul>
+            <li class="list">
+                <a href="{% url 'main' %}">
+                    <span class="icon"><i class="fas fa-home"></i></span>
+                    <span class="title">Home</span>
+                </a>
+                </li>
+    
+                <li class="list">
+                <a href="#">
+                    <span class="icon"><i class="fas fa-user"></i></span>
+                    <span class="title">Profile</span>
+                </a>
+                </li>
+    
+                <li class="list">
+                    <a href="{% url 'learn' %}">
+                    <span class="icon"><i class="fas fa-book"></i></span>
+                    <span class="title">Learn</span>
+                    </a>
+                </li>
+    
+                <li class="list active">
+                    <a href="{% url 'blogs' %}">
+                        <span class="icon"><i class="fas fa-blog"></i></span>
+                        <span class="title">Blogs</span>
+                    </a>
+                </li>
+                
+    
+                <li class="list">
+                <a href="#">
+                    <span class="icon"><i class="fas fa-circle-question"></i></span>
+                    <span class="title">Support</span>
+                </a>
+                </li>
+    
+                <li class="list">
+                <a href="#">
+                    <span class="icon"><i class="fas fa-gear"></i></span>
+                    <span class="title">Settings</span>
+                </a>
+                </li>
+    
+                <li class="list">
+                    <a href="#">
+                    <span class="icon"><i class="fas fa-door-open"></i></span>
+                    <span class="title">LogOut</span>
+                    </a>
+                </li>
+                <div class="indicator"></div>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>How To Approach Series:</h1>
+            <h1>Approaching an OSINT Challenge in a Capture The Flag (CTF)</h1>
+            <p class="info">Open-source intelligence (OSINT) challenges in a Capture The Flag (CTF) competition typically involve gathering information from publicly available sources to solve a puzzle or extract hidden information. Here's a guide on how to approach an OSINT challenge in a CTF:</p>
+            <!-- Steps -->
+            <ol>
+                <li class="info"><strong>Understand the Challenge:</strong>
+                    <p>Grasp the context and objectives of the OSINT challenge. Identify what specific information or answers you need to find.</p>
+                </li>
+                <li class="info"><strong>Source Identification:</strong>
+                    <p>Identify the sources of information provided. This could include websites, social media platforms, forums, public databases, or any other publicly available sources.</p>
+                </li>
+                <li class="info"><strong>Keyword and Metadata Analysis:</strong>
+                    <p>Use relevant keywords to search for information across different platforms. Analyze metadata, timestamps, and tags to find hidden clues or context.</p>
+                </li>
+                <li class="info"><strong>Social Media Analysis:</strong>
+                    <p>Examine social media accounts, posts, comments, and profiles related to the challenge. Look for shared photos, location tags, or connections between users.</p>
+                </li>
+                <li class="info"><strong>Image and File Analysis:</strong>
+                    <p>Use reverse image search tools to identify the source or other locations where a provided image or file might appear online.</p>
+                </li>
+                <li class="info"><strong>Website and Domain Analysis:</strong>
+                    <p>Investigate websites or domains provided in the challenge. Analyze WHOIS data, web archives, or DNS records to gather relevant information.</p>
+                </li>
+                <li class="info"><strong>People and Organization Search:</strong>
+                    <p>Research individuals, organizations, or entities related to the challenge. Look for connections, affiliations, or public information about them.</p>
+                </li>
+                <li class="info"><strong>Collaboration and Information Gathering:</strong>
+                    <p>Collaborate with teammates or seek advice from online forums, OSINT communities, or people with expertise in information gathering for additional insights.</p>
+                </li>
+                <li class="info"><strong>Analyze and Cross-reference Information:</strong>
+                    <p>Analyze the gathered information and cross-reference different data points to build a comprehensive picture or extract hidden clues.</p>
+                </li>
+                <li class="info"><strong>Persistence and Verification:</strong>
+                    <p>Be persistent and verify the credibility of the information obtained. Sometimes, misinformation or red herrings might be part of the challenge.</p>
+                </li>
+            </ol>
+            
+            <br><br>
+            <a class="next" href="{% url 'reversing' %}"> Next -> How To Approach: Reverse Engineering</a>
+            <br><br>
+        </div>
+</body>
+</html>
+
+<style>
+    :root {
+        --background: #333;
+        --text: #FFF;
+        --highlight: #39AC4C;
+    }
+
+    body {
+        font-family: 'Oswald', sans-serif;
+        transition: background-color 0.5s, color 0.5s;
+        background-color: var(--background);
+        color: var(--text);
+        margin: 0;
+        padding: 10px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .theme-switch {
+        --background: #FFF;
+        --text: #333;
+        color: var(--text);
+        width: 50px;
+        height: 25px;
+        background: var(--highlight);
+        border-radius: 50px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .theme-switch .switch {
+        background: white;
+        width: 24px;
+        height: 24px;
+        background: var(--background);
+        border-radius: 50%;
+        transition: transform 0.5s ease; /* Adjusted the transition property */
+        transform: translateX(0);
+        position: relative;
+    }
+
+    .theme-switch::before {
+        content: attr(data-tooltip); /* Tooltip text based on the data-tooltip attribute */
+        position: absolute;
+        background: var(--highlight);
+        color: white;
+        padding: 6px;
+        border-radius: 4px;
+        font-size: 14px;
+        top: 100%; /* Position below the button */
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        pointer-events: none; /* Allow button click through */
+        transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .theme-switch:hover::before {
+        opacity: 1;
+        transform: translateX(-50%) translateY(5px);
+    }
+
+    /* Updated class selector */
+    .light-theme .theme-switch .switch {
+        transform: translateX(25px); /* Adjusted the translateX value */
+    }
+
+    body.light-theme {
+        background-color: #FFF !important;
+        color: #000 !important;
+    }
+
+    .header {
+        font-size: 32px;
+        margin: 0;
+    }
+
+    /* Styling for the <hr> tag based on the theme */
+    .hr-light {
+        background-color: #FFF;
+        height: 2px;
+        border: none;
+    }
+
+    .hr-dark {
+        background-color: #333;
+        height: 2px;
+        border: none;
+    }
+
+    .wrapper {
+    display: flex;
+    }
+
+    .content {
+        flex-grow: 1;
+        padding-left: 120px;
+        padding-right: 20px; /* Add padding to the content */
+    }
+
+    .menucontainer ul {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .menucontainer {
+        position: fixed;
+        width: 70px;
+        height: 530px;
+        background: #fff;
+        border-radius: 35px;
+        box-shadow: 0px 15px 25px rgba(0, 0, 0, .1);
+        transform: translateY(40px);
+    }
+
+    .menucontainer ul li {
+        position: relative;
+        list-style: none;
+        width: 70px;
+        height: 70px;
+        z-index: 1;
+    }
+
+    .menucontainer ul li a {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #333;
+        text-decoration: none;
+    }
+
+    .menucontainer ul li a .icon {
+        display: block;
+        position: relative;
+        line-height: 75px;
+        text-align: center;
+        transition: 0.5s;
+    }
+
+    .menucontainer ul li.active a .icon {
+        color: #fff;
+    }
+
+    .menucontainer ul li a .icon i {
+        font-size: 24px;
+        transition: 0.5s;
+        transform: translateX(-40px);
+    }
+
+    .menucontainer ul li a .title {
+        position: absolute;
+        top: 50%;
+        left: 70px;
+        background: #fff;
+        padding: 5px 10px;
+        transform: translateY(-50%);
+        border-radius: 6px;
+        transition: 0.5s;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .menucontainer ul li:hover a .title {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-25px, -58%);
+    }
+
+    .menucontainer ul li:hover a .title::before {
+        content: "";
+        position: absolute;
+        top: 48%;
+        left: -5px;
+        transform: rotate(45deg) translateY(-50%);
+        height: 6px;
+        width: 6px;
+        background: #fff;
+        border-radius: .5px;
+    }
+
+    .menucontainer ul .indicator {
+        position: absolute;
+        left: 0;
+        top: -2px;
+        width: 70px;
+        height: 70px;
+        transition: 0.5s;
+    }
+
+    .menucontainer ul .indicator::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50px;
+        height: 50px;
+        background: #333;
+        border-radius: 50%;
+        transition: .5s;
+    }
+
+    .menucontainer ul li:nth-child(1).active ~ .indicator {
+        transform: translateY(calc(70px * 0));
+    }
+
+    .menucontainer ul li:nth-child(2).active ~ .indicator {
+        transform: translateY(calc(70px * 1));
+    }
+
+    .menucontainer ul li:nth-child(3).active ~ .indicator {
+        transform: translateY(calc(70px * 2));
+    }
+
+    .menucontainer ul li:nth-child(4).active ~ .indicator {
+        transform: translateY(calc(70px * 3));
+    }
+
+    .menucontainer ul li:nth-child(5).active ~ .indicator {
+        transform: translateY(calc(70px * 4));
+    }
+
+    body.light-theme .menucontainer {
+    background-color: #333;
+    }
+
+    body.light-theme .menucontainer ul li a {
+        color: #FFF;
+    }
+
+    body.light-theme a {
+        color: black;
+    }
+    
+    body.light-theme .menucontainer ul li a .title {
+        background: #333;
+        box-shadow: 0 5px 10px rgba(255, 255, 255, .1);
+    }
+
+    body.light-theme .menucontainer ul .indicator::before {
+        background: #FFF;
+    }
+
+    body.light-theme .menucontainer ul li.active a .icon {
+        color: #333;
+    }
+
+    /* Sidebar styling for light theme (default) */
+    .menucontainer {
+        background: #fff;
+        box-shadow: 0px 15px 25px rgba(0, 0, 0, .1);
+    }
+
+    .menucontainer ul li a {
+        color: #333;
+    }
+
+    .menucontainer ul li a .title {
+        background: #fff;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+    }
+
+    .menucontainer ul .indicator::before {
+        background: #333;
+    }
+    
+    .info {
+        font-size: 20px;
+        margin-top: 25px;
+        line-height: 30px;
+    }
+
+    .next {
+        color: white;
+        float: right;
+        padding-right: 30px;
+        font-size: 18px;
+    }
+</style>
+
+<script>
+    const themeSwitch = document.querySelector('.theme-switch');
+    const body = document.body;
+    const hrElement = document.querySelector('hr');
+
+    themeSwitch.addEventListener('click', () => {
+        body.classList.toggle('light-theme');
+        if (body.classList.contains('light-theme')) {
+            themeSwitch.dataset.tooltip = 'Switch to Dark Mode';
+            hrElement.className = 'hr-dark';
+        } else {
+            themeSwitch.dataset.tooltip = 'Switch to Light Mode';
+            hrElement.className = 'hr-light';
+        }
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const menuContainer = document.querySelector('.menucontainer');
+
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 0) {
+            menuContainer.classList.add('scrolled');
+        } else {
+            menuContainer.classList.remove('scrolled');
+            // Add a delay before removing the class to ensure the transition is completed
+            setTimeout(() => {
+                menuContainer.style.transition = 'none'; // Disable transition temporarily
+                menuContainer.classList.remove('scrolled');
+                setTimeout(() => {
+                    menuContainer.style.transition = ''; // Restore transition
+                }, 50); // Adjust the delay if needed
+            }, 300); // Adjust the delay to match the transition duration
+        }
+    });
+});
+
+</script>
+
+<style>
+    .menucontainer {
+    transition: transform 0.3s ease; /* Add transition property to menucontainer */
+}
+
+.menucontainer.scrolled {
+    transform: translateY(-20px); /* Adjust the value as needed */
+}
+
+
+</style>

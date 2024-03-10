@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs | How To Approach: Forensics</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">
+        <div class="header">CYBERMAZEARENA</div>
+        <div class="theme-switch" data-tooltip="Switch to Light Mode">
+            <div class="switch"></div>
+        </div>
+    </div>
+    <!-- Add the <hr> element with a class based on the theme -->
+    <hr class="hr-light">
+    <div class ="wrapper">
+        <div class="menucontainer">
+        <ul>
+            <li class="list">
+            <a href="{% url 'main' %}">
+                <span class="icon"><i class="fas fa-home"></i></span>
+                <span class="title">Home</span>
+            </a>
+            </li>
+
+            <li class="list">
+            <a href="#">
+                <span class="icon"><i class="fas fa-user"></i></span>
+                <span class="title">Profile</span>
+            </a>
+            </li>
+
+            <li class="list">
+                <a href="{% url 'learn' %}">
+                <span class="icon"><i class="fas fa-book"></i></span>
+                <span class="title">Learn</span>
+                </a>
+            </li>
+
+            <li class="list active">
+                <a href="{% url 'blogs' %}">
+                    <span class="icon"><i class="fas fa-blog"></i></span>
+                    <span class="title">Blogs</span>
+                </a>
+            </li>
+            
+
+            <li class="list">
+            <a href="#">
+                <span class="icon"><i class="fas fa-circle-question"></i></span>
+                <span class="title">Support</span>
+            </a>
+            </li>
+
+            <li class="list">
+            <a href="#">
+                <span class="icon"><i class="fas fa-gear"></i></span>
+                <span class="title">Settings</span>
+            </a>
+            </li>
+
+            <li class="list">
+                <a href="#">
+                <span class="icon"><i class="fas fa-door-open"></i></span>
+                <span class="title">LogOut</span>
+                </a>
+            </li>
+            <div class="indicator"></div>
+        </ul>
+        </div>
+        <div class="content">
+            <h1>How To Approach Series:</h1>
+            <h1>Approaching a Forensic Challenge in a Capture The Flag (CTF)</h1>
+    
+            <p class="info">Approaching a forensic challenge in a Capture The Flag (CTF) competition involves analyzing digital artifacts, file structures, and system behaviors to uncover hidden information or solve a mystery. Here's a step-by-step guide on how to approach a forensic challenge in a CTF:</p>
+            <ol>
+                <li class="info"><strong>Understand the Scenario:</strong> Get a clear understanding of the scenario, including any provided background information or story related to the forensic challenge.</li>
+                <li class="info"><strong>Identify the Artifacts:</strong> Identify the digital artifacts provided. This might include disk images, packet captures, log files, memory dumps, or any other digital evidence.</li>
+                <li class="info"><strong>File Analysis:</strong> Use forensic tools like Autopsy, FTK Imager, or Sleuth Kit to examine file systems, metadata, timestamps, and file contents. Check for hidden files, deleted data, or altered timestamps that might contain clues.</li>
+                <li class="info"><strong>Memory Analysis:</strong> Analyze memory dumps (if provided) using tools like Volatility or Rekall to identify running processes, open connections, or potential malware.</li>
+                <li class="info"><strong>Network Traffic Analysis:</strong> Analyze packet captures using Wireshark or Tcpdump to examine network traffic. Look for anomalies, specific requests, or communications that might be part of the challenge.</li>
+                <li class="info"><strong>Steganography and Encryption:</strong> Check for hidden messages or data concealed through steganography or encryption within files. Utilize steganography tools and decryption techniques to reveal hidden information.</li>
+                <li class="info"><strong>Timeline Analysis:</strong> Create a timeline of events based on timestamps and logs. This can provide insights into the sequence of actions or events that occurred.</li>
+                <li class="info"><strong>Malware Analysis:</strong> If the challenge involves malware, use sandboxing or static/dynamic analysis tools to dissect the malware and understand its behavior.</li>
+                <li class="info"><strong>Code Analysis:</strong> If provided with source code or executables, analyze the code for vulnerabilities, backdoors, or hidden messages.</li>
+                <li class="info"><strong>Collaboration and Research:</strong> Collaborate with team members or seek guidance from online forums or documentation to fill knowledge gaps or seek a different perspective.</li>
+                <li class="info"><strong>Persistence and Attention to Detail:</strong> Forensic challenges can be intricate and might involve analyzing large volumes of data. Patience, attention to detail, and persistence are key to finding hidden clues or solving the puzzle.</li>
+            </ol>
+            <br><br>
+            <a class="next" href="{% url 'stegano' %}"> Next -> How To Approach: Steganography</a>
+            <br><br>
+</body>
+</html>
+
+<style>
+    :root {
+        --background: #333;
+        --text: #FFF;
+        --highlight: #39AC4C;
+    }
+
+    body {
+        font-family: 'Oswald', sans-serif;
+        transition: background-color 0.5s, color 0.5s;
+        background-color: var(--background);
+        color: var(--text);
+        margin: 0;
+        padding: 10px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .theme-switch {
+        --background: #FFF;
+        --text: #333;
+        color: var(--text);
+        width: 50px;
+        height: 25px;
+        background: var(--highlight);
+        border-radius: 50px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .theme-switch .switch {
+        background: white;
+        width: 24px;
+        height: 24px;
+        background: var(--background);
+        border-radius: 50%;
+        transition: transform 0.5s ease; /* Adjusted the transition property */
+        transform: translateX(0);
+        position: relative;
+    }
+
+    .theme-switch::before {
+        content: attr(data-tooltip); /* Tooltip text based on the data-tooltip attribute */
+        position: absolute;
+        background: var(--highlight);
+        color: white;
+        padding: 6px;
+        border-radius: 4px;
+        font-size: 14px;
+        top: 100%; /* Position below the button */
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        pointer-events: none; /* Allow button click through */
+        transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .theme-switch:hover::before {
+        opacity: 1;
+        transform: translateX(-50%) translateY(5px);
+    }
+
+    /* Updated class selector */
+    .light-theme .theme-switch .switch {
+        transform: translateX(25px); /* Adjusted the translateX value */
+    }
+
+    body.light-theme {
+        background-color: #FFF !important;
+        color: #000 !important;
+    }
+
+    .header {
+        font-size: 32px;
+        margin: 0;
+    }
+
+    /* Styling for the <hr> tag based on the theme */
+    .hr-light {
+        background-color: #FFF;
+        height: 2px;
+        border: none;
+    }
+
+    .hr-dark {
+        background-color: #333;
+        height: 2px;
+        border: none;
+    }
+
+    .wrapper {
+    display: flex;
+    }
+
+    .content {
+        flex-grow: 1;
+        padding-left: 120px;
+        padding-right: 20px; /* Add padding to the content */
+    }
+
+    .menucontainer ul {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .menucontainer {
+        position: fixed;
+        width: 70px;
+        height: 530px;
+        background: #fff;
+        border-radius: 35px;
+        box-shadow: 0px 15px 25px rgba(0, 0, 0, .1);
+        transform: translateY(40px);
+    }
+
+    .menucontainer ul li {
+        position: relative;
+        list-style: none;
+        width: 70px;
+        height: 70px;
+        z-index: 1;
+    }
+
+    .menucontainer ul li a {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #333;
+        text-decoration: none;
+    }
+
+    .menucontainer ul li a .icon {
+        display: block;
+        position: relative;
+        line-height: 75px;
+        text-align: center;
+        transition: 0.5s;
+    }
+
+    .menucontainer ul li.active a .icon {
+        color: #fff;
+    }
+
+    .menucontainer ul li a .icon i {
+        font-size: 24px;
+        transition: 0.5s;
+        transform: translateX(-40px);
+    }
+
+    .menucontainer ul li a .title {
+        position: absolute;
+        top: 50%;
+        left: 70px;
+        background: #fff;
+        padding: 5px 10px;
+        transform: translateY(-50%);
+        border-radius: 6px;
+        transition: 0.5s;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .menucontainer ul li:hover a .title {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-25px, -58%);
+    }
+
+    .menucontainer ul li:hover a .title::before {
+        content: "";
+        position: absolute;
+        top: 48%;
+        left: -5px;
+        transform: rotate(45deg) translateY(-50%);
+        height: 6px;
+        width: 6px;
+        background: #fff;
+        border-radius: .5px;
+    }
+
+    .menucontainer ul .indicator {
+        position: absolute;
+        left: 0;
+        top: -2px;
+        width: 70px;
+        height: 70px;
+        transition: 0.5s;
+    }
+
+    .menucontainer ul .indicator::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50px;
+        height: 50px;
+        background: #333;
+        border-radius: 50%;
+        transition: .5s;
+    }
+
+    .menucontainer ul li:nth-child(1).active ~ .indicator {
+        transform: translateY(calc(70px * 0));
+    }
+
+    .menucontainer ul li:nth-child(2).active ~ .indicator {
+        transform: translateY(calc(70px * 1));
+    }
+
+    .menucontainer ul li:nth-child(3).active ~ .indicator {
+        transform: translateY(calc(70px * 2));
+    }
+
+    .menucontainer ul li:nth-child(4).active ~ .indicator {
+        transform: translateY(calc(70px * 3));
+    }
+
+    .menucontainer ul li:nth-child(5).active ~ .indicator {
+        transform: translateY(calc(70px * 4));
+    }
+
+    body.light-theme .menucontainer {
+    background-color: #333;
+    }
+
+    body.light-theme .menucontainer ul li a {
+        color: #FFF;
+    }
+
+    body.light-theme .menucontainer ul li a .title {
+        background: #333;
+        box-shadow: 0 5px 10px rgba(255, 255, 255, .1);
+    }
+
+    body.light-theme a {
+        color: black;
+    }
+    
+    body.light-theme .menucontainer ul .indicator::before {
+        background: #FFF;
+    }
+
+    body.light-theme .menucontainer ul li.active a .icon {
+        color: #333;
+    }
+
+    /* Sidebar styling for light theme (default) */
+    .menucontainer {
+        background: #fff;
+        box-shadow: 0px 15px 25px rgba(0, 0, 0, .1);
+    }
+
+    .menucontainer ul li a {
+        color: #333;
+    }
+
+    .menucontainer ul li a .title {
+        background: #fff;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+    }
+
+    .menucontainer ul .indicator::before {
+        background: #333;
+    }
+    
+    .info {
+        font-size: 20px;
+        margin-top: 25px;
+        line-height: 30px;
+    }
+    
+    .next {
+        color: white;
+        float: right;
+        padding-right: 30px;
+        font-size: 18px;
+    }
+</style>
+
+<script>
+    const themeSwitch = document.querySelector('.theme-switch');
+    const body = document.body;
+    const hrElement = document.querySelector('hr');
+
+    themeSwitch.addEventListener('click', () => {
+        body.classList.toggle('light-theme');
+        if (body.classList.contains('light-theme')) {
+            themeSwitch.dataset.tooltip = 'Switch to Dark Mode';
+            hrElement.className = 'hr-dark';
+        } else {
+            themeSwitch.dataset.tooltip = 'Switch to Light Mode';
+            hrElement.className = 'hr-light';
+        }
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const menuContainer = document.querySelector('.menucontainer');
+
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 0) {
+            menuContainer.classList.add('scrolled');
+        } else {
+            menuContainer.classList.remove('scrolled');
+            // Add a delay before removing the class to ensure the transition is completed
+            setTimeout(() => {
+                menuContainer.style.transition = 'none'; // Disable transition temporarily
+                menuContainer.classList.remove('scrolled');
+                setTimeout(() => {
+                    menuContainer.style.transition = ''; // Restore transition
+                }, 50); // Adjust the delay if needed
+            }, 300); // Adjust the delay to match the transition duration
+        }
+    });
+});
+
+</script>
+
+<style>
+    .menucontainer {
+    transition: transform 0.3s ease; /* Add transition property to menucontainer */
+}
+
+.menucontainer.scrolled {
+    transform: translateY(-20px); /* Adjust the value as needed */
+}
+
+
+</style>

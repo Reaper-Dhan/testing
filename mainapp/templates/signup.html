@@ -1,0 +1,207 @@
+{% if message %}
+<script>
+	alert('{{ message }}');
+</script>
+{% endif %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CyberMazeArena | Sign Up</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+</head>
+<body>
+	<div class="container">
+        <div class="header">CYBERMAZEARENA</div>
+        <div class="theme-switch" data-tooltip="Switch to Light Mode">
+            <div class="switch"></div>
+        </div>
+    </div>
+    <!-- Add the <hr> element with a class based on the theme -->
+    <hr class="hr-light">
+	<br><br>
+	<div class="centerify">
+        <div class="form-container">
+			<center><h2>CyberMazeArena | SignUp</h2></center>
+			<form action="/postsignUp" method="post">
+				{% csrf_token %}
+				<br/>
+				<label for="username">Username &emsp;&emsp; &ensp; &emsp;</label>
+				<input class="inputs" type="name" id="Username" name="name"><br><br>
+
+				<label for="dob">DOB &emsp;&emsp;&emsp;&emsp; &emsp; &ensp;</label>
+				<input class="inputs" type="date" id="dob" name="dob"><br><br>
+
+				<!-- Email: -->
+				<label for="Email" >Email ID &emsp; &emsp; &emsp; &emsp;</label>
+				<input class="inputs" type="email" id="Email" name="email"><br><br>
+				<!-- Password: -->
+				<label for="Password">Password &emsp; &emsp; &emsp; &ensp;</label>
+				<input class="inputs" type="password" id="Password" name="pass"><br><br>
+				<!-- RepeatPassword: -->
+				<label for="confirm_password">Confirm Password &emsp;</label>
+				<input class="inputs" type="password" id="confirm_password" name="conpass"><br><br>
+				<center><input type="submit" value="SignUp"></center>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
+
+<style>
+    :root {
+        --background: #333;
+        --text: #FFF;
+        --highlight: #39AC4C;
+    }
+
+    body {
+        font-family: 'Oswald', sans-serif;
+        transition: background-color 0.5s, color 0.5s;
+        background-color: var(--background);
+        color: var(--text);
+        margin: 0;
+        padding: 10px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .theme-switch {
+        --background: #FFF;
+        --text: #333;
+        color: var(--text);
+        width: 50px;
+        height: 25px;
+        background: var(--highlight);
+        border-radius: 50px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .theme-switch .switch {
+        background: white;
+        width: 24px;
+        height: 24px;
+        background: var(--background);
+        border-radius: 50%;
+        transition: transform 0.5s ease; /* Adjusted the transition property */
+        transform: translateX(0);
+        position: relative;
+    }
+
+    .theme-switch::before {
+        content: attr(data-tooltip); /* Tooltip text based on the data-tooltip attribute */
+        position: absolute;
+        background: var(--highlight);
+        color: white;
+        padding: 6px;
+        border-radius: 4px;
+        font-size: 14px;
+        top: 100%; /* Position below the button */
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        pointer-events: none; /* Allow button click through */
+        transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .theme-switch:hover::before {
+        opacity: 1;
+        transform: translateX(-50%) translateY(5px);
+    }
+
+    /* Updated class selector */
+    .light-theme .theme-switch .switch {
+        transform: translateX(25px); /* Adjusted the translateX value */
+    }
+
+    body.light-theme {
+        background-color: #FFF !important;
+        color: #000 !important;
+    }
+
+    .header {
+        font-size: 32px;
+        margin: 0;
+    }
+
+    /* Styling for the <hr> tag based on the theme */
+    .hr-light {
+        background-color: #FFF;
+        height: 2px;
+        border: none;
+    }
+
+    .hr-dark {
+        background-color: #333;
+        height: 2px;
+        border: none;
+    }
+    
+    .centerify {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    .form-container {
+        text-align: left; /* Keep text left-aligned within the form */
+        background-color: #5a5858;
+        padding: 50px;
+        width: 450px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        transform: translateY(-40px);
+    }
+
+	label {
+        font-size: 20px;
+    }
+
+    .inputs {
+        width: 200px;
+        transform: translateY(-4px);
+        padding: 3px;
+    }
+
+    input[type="submit"], button {
+        padding-top: 6px;
+        padding-bottom: 6px;
+        padding-left: 16px;
+        padding-right: 16px;
+        border: 0;
+        border-radius: 7px 0 7px 0;
+        font-size: 15px;
+    }
+
+    input[type="submit"]:hover, button:hover {
+        background-color: #6dd064;
+    }
+</style>
+
+<script>
+    const themeSwitch = document.querySelector('.theme-switch');
+    const body = document.body;
+    const hrElement = document.querySelector('hr');
+
+    themeSwitch.addEventListener('click', () => {
+        body.classList.toggle('light-theme');
+        if (body.classList.contains('light-theme')) {
+            themeSwitch.dataset.tooltip = 'Switch to Dark Mode';
+            hrElement.className = 'hr-dark';
+        } else {
+            themeSwitch.dataset.tooltip = 'Switch to Light Mode';
+            hrElement.className = 'hr-light';
+        }
+    });
+</script>

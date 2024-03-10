@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs | How To Approach: Web Exploitation</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">
+        <div class="header">CYBERMAZEARENA</div>
+        <div class="theme-switch" data-tooltip="Switch to Light Mode">
+            <div class="switch"></div>
+        </div>
+    </div>
+    <!-- Add the <hr> element with a class based on the theme -->
+    <hr class="hr-light">
+    <div class ="wrapper">
+        <div class="menucontainer">
+        <ul>
+            <li class="list">
+                <a href="{% url 'main' %}">
+                    <span class="icon"><i class="fas fa-home"></i></span>
+                    <span class="title">Home</span>
+                </a>
+                </li>
+    
+                <li class="list">
+                <a href="#">
+                    <span class="icon"><i class="fas fa-user"></i></span>
+                    <span class="title">Profile</span>
+                </a>
+                </li>
+    
+                <li class="list">
+                    <a href="{% url 'learn' %}">
+                    <span class="icon"><i class="fas fa-book"></i></span>
+                    <span class="title">Learn</span>
+                    </a>
+                </li>
+    
+                <li class="list active">
+                    <a href="{% url 'blogs' %}">
+                        <span class="icon"><i class="fas fa-blog"></i></span>
+                        <span class="title">Blogs</span>
+                    </a>
+                </li>
+                
+    
+                <li class="list">
+                <a href="#">
+                    <span class="icon"><i class="fas fa-circle-question"></i></span>
+                    <span class="title">Support</span>
+                </a>
+                </li>
+    
+                <li class="list">
+                <a href="#">
+                    <span class="icon"><i class="fas fa-gear"></i></span>
+                    <span class="title">Settings</span>
+                </a>
+                </li>
+    
+                <li class="list">
+                    <a href="#">
+                    <span class="icon"><i class="fas fa-door-open"></i></span>
+                    <span class="title">LogOut</span>
+                    </a>
+                </li>
+                <div class="indicator"></div>
+            </ul>
+            </ul>
+        </ul>
+        </div>
+        <div class="content">
+            <h1>How To Approach Series:</h1>
+            <h1>Approaching a Web Exploitation Challenge in a CTF</h1>
+            <p class="info">When facing a web exploitation challenge in a Capture The Flag (CTF) competition, the goal is to identify and exploit vulnerabilities within a web application. Here's a step-by-step guide on how to approach a web exploitation challenge:</p>
+            <!-- Steps -->
+            <ol>
+                <li class="info"><strong>Understanding the Challenge:</strong>
+                    <ul>
+                        <li class="info"><strong>Read the Description:</strong> Understand the context, objectives, and rules provided for the challenge.</li>
+                        <li class="info"><strong>Identify Target:</strong> Know the target web application or service, such as a web page, API, or a specific URL.</li>
+                    </ul>
+                </li>
+                <li class="info"><strong>Reconnaissance:</strong>
+                    <ul>
+                        <li class="info"><strong>Explore the Web Application:</strong> Analyze the functionality and features of the web application. Understand the user interactions, forms, input fields, and parameters.</li>
+                        <li class="info"><strong>Check for Vulnerabilities:</strong> Look for common vulnerabilities like SQL injection, Cross-Site Scripting (XSS), Cross-Site Request Forgery (CSRF), command injection, insecure direct object references, and more.</li>
+                    </ul>
+                </li>
+                <li class="info"><strong>Test for Common Vulnerabilities:</strong>
+                    <ul>
+                        <li class="info"><strong>SQL Injection:</strong> Test for SQL injection by manipulating input fields to execute unauthorized SQL queries.</li>
+                        <li class="info"><strong>XSS (Cross-Site Scripting):</strong> Inject scripts or payloads into input fields to execute malicious code on the client-side.</li>
+                        <li class="info"><strong>CSRF (Cross-Site Request Forgery):</strong> Check if it's possible to forge requests to perform unintended actions in the web app on behalf of an authenticated user.</li>
+                    </ul>
+                </li>
+                <li class="info"><strong>Input Manipulation:</strong>
+                    <ul>
+                        <li class="info"><strong>Parameter Tampering:</strong> Modify parameters in URLs, forms, or requests to bypass security checks or access unauthorized areas.</li>
+                        <li class="info"><strong>File Upload:</strong> Try to upload malicious files or execute code via file upload functionality (if available).</li>
+                    </ul>
+                </li>
+                <li class="info"><strong>Authentication and Authorization:</strong>
+                    <ul>
+                        <li class="info"><strong>Authentication Bypass:</strong> Attempt to bypass authentication mechanisms or access unauthorized areas.</li>
+                        <li class="info"><strong>Privilege Escalation:</strong> Check for methods to escalate privileges and access restricted functionalities or data.</li>
+                    </ul>
+                </li>
+                <li class="info"><strong>Exploitation:</strong>
+                    <ul>
+                        <li class="info"><strong>Exploit Vulnerabilities:</strong> Exploit the identified vulnerabilities to gain control or access to sensitive information.</li>
+                        <li class="info"><strong>Payload Injection:</strong> Inject payloads or code to manipulate the behavior of the web application.</li>
+                    </ul>
+                </li>
+                <li class="info"><strong>Post-Exploitation:</strong>
+                    <ul>
+                        <li class="info"><strong>Maintain Access:</strong> Once you gain access, try to maintain control or access by creating a backdoor or gaining persistent access.</li>
+                    </ul>
+                </li>
+                <li class="info"><strong>Documentation and Reporting:</strong>
+                    <ul>
+                        <li class="info"><strong>Document the Steps:</strong> Keep track of your actions, findings, and successful exploitation techniques for later review or reporting.</li>
+                        <li class="info"><strong>Report:</strong> If applicable, provide a detailed report or write-up of your approach, findings, and the exploitation process.</li>
+                    </ul>
+                </li>
+                <li class="info"><strong>Collaboration and Learning:</strong>
+                    <ul>
+                        <li class="info"><strong>Collaborate:</strong> Engage with teammates or seek guidance from forums, write-ups, and communities for additional insights and approaches.</li>
+                        <li class="info"><strong>Learn from Failures:</strong> If unsuccessful, analyze why the exploitation didn't work and learn from it for future attempts.</li>
+                    </ul>
+                </li>
+                <li class="info"><strong>Ethical Consideration:</strong> Ensure all actions are performed ethically within the scope of the challenge, avoiding any unauthorized actions that could harm the web application or violate rules.</li>
+            </ol>
+
+            <br><br>
+        </div>
+</body>
+</html>
+
+<style>
+    :root {
+        --background: #333;
+        --text: #FFF;
+        --highlight: #39AC4C;
+    }
+
+    body {
+        font-family: 'Oswald', sans-serif;
+        transition: background-color 0.5s, color 0.5s;
+        background-color: var(--background);
+        color: var(--text);
+        margin: 0;
+        padding: 10px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .theme-switch {
+        --background: #FFF;
+        --text: #333;
+        color: var(--text);
+        width: 50px;
+        height: 25px;
+        background: var(--highlight);
+        border-radius: 50px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .theme-switch .switch {
+        background: white;
+        width: 24px;
+        height: 24px;
+        background: var(--background);
+        border-radius: 50%;
+        transition: transform 0.5s ease; /* Adjusted the transition property */
+        transform: translateX(0);
+        position: relative;
+    }
+
+    .theme-switch::before {
+        content: attr(data-tooltip); /* Tooltip text based on the data-tooltip attribute */
+        position: absolute;
+        background: var(--highlight);
+        color: white;
+        padding: 6px;
+        border-radius: 4px;
+        font-size: 14px;
+        top: 100%; /* Position below the button */
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        pointer-events: none; /* Allow button click through */
+        transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .theme-switch:hover::before {
+        opacity: 1;
+        transform: translateX(-50%) translateY(5px);
+    }
+
+    /* Updated class selector */
+    .light-theme .theme-switch .switch {
+        transform: translateX(25px); /* Adjusted the translateX value */
+    }
+
+    body.light-theme {
+        background-color: #FFF !important;
+        color: #000 !important;
+    }
+
+    .header {
+        font-size: 32px;
+        margin: 0;
+    }
+
+    /* Styling for the <hr> tag based on the theme */
+    .hr-light {
+        background-color: #FFF;
+        height: 2px;
+        border: none;
+    }
+
+    .hr-dark {
+        background-color: #333;
+        height: 2px;
+        border: none;
+    }
+
+    .wrapper {
+    display: flex;
+    }
+
+    .content {
+        flex-grow: 1;
+        padding-left: 120px;
+        padding-right: 20px; /* Add padding to the content */
+    }
+
+    .menucontainer ul {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .menucontainer {
+        position: fixed;
+        width: 70px;
+        height: 530px;
+        background: #fff;
+        border-radius: 35px;
+        box-shadow: 0px 15px 25px rgba(0, 0, 0, .1);
+        transform: translateY(40px);
+    }
+
+    .menucontainer ul li {
+        position: relative;
+        list-style: none;
+        width: 70px;
+        height: 70px;
+        z-index: 1;
+    }
+
+    .menucontainer ul li a {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #333;
+        text-decoration: none;
+    }
+
+    .menucontainer ul li a .icon {
+        display: block;
+        position: relative;
+        line-height: 75px;
+        text-align: center;
+        transition: 0.5s;
+    }
+
+    .menucontainer ul li.active a .icon {
+        color: #fff;
+    }
+
+    .menucontainer ul li a .icon i {
+        font-size: 24px;
+        transition: 0.5s;
+        transform: translateX(-40px);
+    }
+
+    .menucontainer ul li a .title {
+        position: absolute;
+        top: 50%;
+        left: 70px;
+        background: #fff;
+        padding: 5px 10px;
+        transform: translateY(-50%);
+        border-radius: 6px;
+        transition: 0.5s;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .menucontainer ul li:hover a .title {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-25px, -58%);
+    }
+
+    .menucontainer ul li:hover a .title::before {
+        content: "";
+        position: absolute;
+        top: 48%;
+        left: -5px;
+        transform: rotate(45deg) translateY(-50%);
+        height: 6px;
+        width: 6px;
+        background: #fff;
+        border-radius: .5px;
+    }
+
+    .menucontainer ul .indicator {
+        position: absolute;
+        left: 0;
+        top: -2px;
+        width: 70px;
+        height: 70px;
+        transition: 0.5s;
+    }
+
+    .menucontainer ul .indicator::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50px;
+        height: 50px;
+        background: #333;
+        border-radius: 50%;
+        transition: .5s;
+    }
+
+    .menucontainer ul li:nth-child(1).active ~ .indicator {
+        transform: translateY(calc(70px * 0));
+    }
+
+    .menucontainer ul li:nth-child(2).active ~ .indicator {
+        transform: translateY(calc(70px * 1));
+    }
+
+    .menucontainer ul li:nth-child(3).active ~ .indicator {
+        transform: translateY(calc(70px * 2));
+    }
+
+    .menucontainer ul li:nth-child(4).active ~ .indicator {
+        transform: translateY(calc(70px * 3));
+    }
+
+    .menucontainer ul li:nth-child(5).active ~ .indicator {
+        transform: translateY(calc(70px * 4));
+    }
+
+    body.light-theme .menucontainer {
+    background-color: #333;
+    }
+
+    body.light-theme .menucontainer ul li a {
+        color: #FFF;
+    }
+
+    body.light-theme a {
+        color: black;
+    }
+    
+    body.light-theme .menucontainer ul li a .title {
+        background: #333;
+        box-shadow: 0 5px 10px rgba(255, 255, 255, .1);
+    }
+
+    body.light-theme .menucontainer ul .indicator::before {
+        background: #FFF;
+    }
+
+    body.light-theme .menucontainer ul li.active a .icon {
+        color: #333;
+    }
+
+    /* Sidebar styling for light theme (default) */
+    .menucontainer {
+        background: #fff;
+        box-shadow: 0px 15px 25px rgba(0, 0, 0, .1);
+    }
+
+    .menucontainer ul li a {
+        color: #333;
+    }
+
+    .menucontainer ul li a .title {
+        background: #fff;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+    }
+
+    .menucontainer ul .indicator::before {
+        background: #333;
+    }
+    
+    .info {
+        font-size: 20px;
+        margin-top: 25px;
+        line-height: 30px;
+    }
+
+    .next {
+        color: white;
+        float: right;
+        padding-right: 30px;
+        font-size: 18px;
+    }
+</style>
+
+<script>
+    const themeSwitch = document.querySelector('.theme-switch');
+    const body = document.body;
+    const hrElement = document.querySelector('hr');
+
+    themeSwitch.addEventListener('click', () => {
+        body.classList.toggle('light-theme');
+        if (body.classList.contains('light-theme')) {
+            themeSwitch.dataset.tooltip = 'Switch to Dark Mode';
+            hrElement.className = 'hr-dark';
+        } else {
+            themeSwitch.dataset.tooltip = 'Switch to Light Mode';
+            hrElement.className = 'hr-light';
+        }
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const menuContainer = document.querySelector('.menucontainer');
+
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 0) {
+            menuContainer.classList.add('scrolled');
+        } else {
+            menuContainer.classList.remove('scrolled');
+            // Add a delay before removing the class to ensure the transition is completed
+            setTimeout(() => {
+                menuContainer.style.transition = 'none'; // Disable transition temporarily
+                menuContainer.classList.remove('scrolled');
+                setTimeout(() => {
+                    menuContainer.style.transition = ''; // Restore transition
+                }, 50); // Adjust the delay if needed
+            }, 300); // Adjust the delay to match the transition duration
+        }
+    });
+});
+
+</script>
+
+<style>
+    .menucontainer {
+    transition: transform 0.3s ease; /* Add transition property to menucontainer */
+}
+
+.menucontainer.scrolled {
+    transform: translateY(-20px); /* Adjust the value as needed */
+}
+
+
+</style>

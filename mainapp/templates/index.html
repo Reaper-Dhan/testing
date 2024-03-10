@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="10, url=login">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberMazeArena</title>
+</head>
+
+<body class="parent">
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <center>
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        <lottie-player src="https://lottie.host/5ef7bc61-1c71-42e2-8862-5f26747e40c8/ShWURvtBjy.json" background="transparent" speed="1.5" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+    </center>
+</body>
+
+<style>
+    html,
+    body {
+        background: #172324;
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    .bar {
+        position: relative;
+        height: 2px;
+        width: 500px;
+        margin: 0 auto;
+        background: #172324;
+        margin-top: 150px;
+    }
+    
+    .circle {
+        position: absolute;
+        top: -30px;
+        margin-left: -30px;
+        height: 60px;
+        width: 60px;
+        left: 0;
+        background: #172324;
+        border-radius: 30%;
+        -webkit-animation: move 5s infinite;
+    }
+    
+    p {
+        position: absolute;
+        top: -35px;
+        right: -85px;
+        text-transform: uppercase;
+        color: #347fc3;
+        font-family: helvetica, sans-serif;
+        font-weight: bold;
+    }
+    
+    @-webkit-keyframes move {
+        0% {
+            left: 0;
+        }
+        50% {
+            left: 100%;
+            -webkit-transform: rotate(450deg);
+            width: 150px;
+            height: 150px;
+        }
+        75% {
+            left: 100%;
+            -webkit-transform: rotate(450deg);
+            width: 150px;
+            height: 150px;
+        }
+        100% {
+            right: 100%;
+        }
+    }
+</style>

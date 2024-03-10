@@ -1,0 +1,30 @@
+<!-- profile.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CyberMazeArena | Profile</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+</head>
+<body>
+    <div class="container">
+        <div class="header">CYBERMAZEARENA</div>
+        <div class="theme-switch" data-tooltip="Switch to Light Mode">
+            <div class="switch"></div>
+        </div>
+    </div>
+    <hr class="hr-light">
+    <br><br>
+    <div class="centerify">
+        <div class="form-container">
+            <center><h2>User Profile</h2></center>
+            <div class="profile-details">
+                <p><strong>Username:</strong> {{ user.username }}</p>
+                <p><strong>Email:</strong> {{ user.email }}</p>
+                <p><strong>Date of Birth:</strong> {{ user.dob }}</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
